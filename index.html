@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Namkha Lhamo ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ec4,#ffd8e8);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:absolute;
+font-size:22px;
+animation:float 7s linear infinite;
+opacity:.7;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{opacity:1;}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+/* Petals */
+
+.petal{
+position:absolute;
+font-size:24px;
+animation:fall 8s linear infinite;
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-50px) rotate(0deg);
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+
+}
+
+/* Scene */
+
+.scene{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
+}
+
+#story,
+#gallery,
+#proposal{
+display:none;
+}
+
+/* Envelope */
+
+.envelope{
+width:260px;
+height:170px;
+background:white;
+border-radius:10px;
+position:relative;
+cursor:pointer;
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+
+50%{
+transform:scale(1.05);
+}
+
+}
+
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:#ffd1df;
+clip-path:polygon(0 0,50% 60%,100% 0);
+}
+
+.letter{
+position:absolute;
+top:10%;
+left:5%;
+width:90%;
+height:80%;
+background:white;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:20px;
+font-weight:bold;
+color:#ff2d75;
+border-radius:10px;
+}
+
+.seal{
+
+position:absolute;
+left:50%;
+top:55%;
+transform:translate(-50%,-50%);
+width:70px;
+height:70px;
+background:#ff2d75;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:35px;
+color:white;
+box-shadow:0 0 20px hotpink;
+}
+
+/* Story */
+
+#story h1{
+
+color:#ff2d75;
+margin-bottom:20px;
+
+}
+
+#typing{
+
+font-size:20px;
+width:90%;
+max-width:700px;
+text-align:center;
+line-height:1.8;
+color:#444;
+
+}
+
+/* Photos */
+
+.photos{
+
+display:flex;
+gap:50px;
+margin-top:20px;
+
+}
+
+.photo{
+
+width:140px;
+height:140px;
+border-radius:50%;
+overflow:hidden;
+border:5px solid white;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+
+}
+
+.photo img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
+}
+
+#heart{
+
+font-size:60px;
+margin:25px;
+display:none;
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.2);
+}
+
+}
+
+/* Proposal */
+
+#proposal h1{
+
+color:#ff2d75;
+margin-bottom:20px;
+
+}
+
+button{
+
+padding:15px 30px;
+border:none;
+border-radius:30px;
+font-size:20px;
+cursor:pointer;
+margin:10px;
+
+}
+
+#yes{
+
+background:#ff2d75;
+color:white;
+
+}
+
+#no{
+
+background:white;
+color:#ff2d75;
+position:absolute;
+
+}
+
+#timer{
+
+font-size:18px;
+margin-top:15px;
+color:#333;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro" class="scene">
+
+<h1 style="color:white;margin-bottom:20px;">
+💌 For Namkha Lhamo 💌
+</h1>
+
+<div class="envelope" onclick="openLetter()">
+
+<div class="letter">
+Open Me ❤️
+</div>
+
+<div class="flap"></div>
+
+<div class="seal">
+❤️
+</div>
+
+</div>
+
+<p style="margin-top:20px;color:white;">
+Tap the Heart ❤️
+</p>
+
+</div>
+
+<div id="story" class="scene">
+
+<h1>Our Story ❤️</h1>
+
+<p id="typing"></p>
+
+<div class="photos">
+
+<div class="photo">
+<img src="me.jpg">
+</div>
+
+<div id="heart">
+❤️
+</div>
+
+<div class="photo">
+<img src="namkha.jpg">
+</div>
+
+</div>
+
+</div>
+
+<div id="proposal" class="scene">
+
+<h1>
+Namkha Lhamo ❤️
+<br><br>
+Will You Be Mine Forever?
+</h1>
+
+<div id="timer"></div>
+
+<button id="yes">
+YES ❤️
+</button>
+
+<button id="no">
+NO 😅
+</button>
+
+</div>
+
+<script>
+  // Love message
+
+const message = `Every beautiful story begins with a simple "Hello." ❤️
+
+It has been 6–7 wonderful months since we started chatting.
+
+Every message from you makes my day brighter.
+Your smile, your kindness, and your presence have become very special to me.
+
+Namkha Lhamo...
+Today I want to tell you something from the bottom of my heart. ❤️`;
+
+let index = 0;
+
+function typeMessage(){
+
+if(index < message.length){
+
+document.getElementById("typing").innerHTML += message.charAt(index);
+
+index++;
+
+setTimeout(typeMessage,45);
+
+}else{
+
+setTimeout(showPhotos,1500);
+
+}
+
+}
+
+// Envelope
+
+function openLetter(){
+
+document.querySelector(".seal").innerHTML="💥";
+
+document.querySelector(".seal").style.transform="translate(-50%,-50%) scale(1.6)";
+
+setTimeout(()=>{
+
+document.getElementById("intro").style.display="none";
+
+document.getElementById("story").style.display="flex";
+
+typeMessage();
+
+},1200);
+
+}
+
+// Photos animation
+
+function showPhotos(){
+
+let photos=document.querySelectorAll(".photo");
+
+photos[0].animate([
+
+{transform:"translateX(-120px)"},
+
+{transform:"translateX(0px)"}
+
+],{
+
+duration:2000,
+
+fill:"forwards"
+
+});
+
+photos[1].animate([
+
+{transform:"translateX(120px)"},
+
+{transform:"translateX(0px)"}
+
+],{
+
+duration:2000,
+
+fill:"forwards"
+
+});
+
+document.getElementById("heart").style.display="block";
+
+setTimeout(showProposal,3500);
+
+}
+
+// Timer
+
+const startDate=new Date("2025-12-01");
+
+function updateTimer(){
+
+let now=new Date();
+
+let diff=now-startDate;
+
+let days=Math.floor(diff/86400000);
+
+let hrs=Math.floor(diff%86400000/3600000);
+
+let mins=Math.floor(diff%3600000/60000);
+
+let sec=Math.floor(diff%60000/1000);
+
+document.getElementById("timer").innerHTML=
+
+"❤️ Together for "+days+" Days "+hrs+" Hours "+mins+" Minutes "+sec+" Seconds";
+
+}
+
+setInterval(updateTimer,1000);
+
+// Proposal
+
+function showProposal(){
+
+document.getElementById("story").style.display="none";
+
+document.getElementById("proposal").style.display="flex";
+
+}
+
+// NO button runs away
+
+const no=document.getElementById("no");
+
+no.addEventListener("touchstart",moveNo);
+
+no.addEventListener("mouseover",moveNo);
+
+function moveNo(){
+
+no.style.left=Math.random()*80+"vw";
+
+no.style.top=Math.random()*80+"vh";
+
+}
+
+// YES button
+
+document.getElementById("yes").onclick=function(){
+
+document.body.innerHTML=`
+
+<div style="display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+height:100vh;
+background:linear-gradient(135deg,#ff9ec4,#ffe6f1);
+text-align:center;
+padding:20px;">
+
+<h1 style="font-size:45px;color:#ff2d75;">
+💖 Thank You 💖
+</h1>
+
+<h2 style="margin-top:20px;">
+I Promise To Love You,
+Respect You,
+Support You,
+And Stay Beside You Forever.
+</h2>
+
+<h1 style="margin-top:30px;color:#ff2d75;">
+❤️ I Love You Namkha Lhamo ❤️
+</h1>
+
+<div style="font-size:70px;margin-top:30px;">
+🎉🎉🎉💖💖🌸🌸
+</div>
+
+</div>
+
+`;
+
+}
+
+// Floating Hearts
+
+for(let i=0;i<30;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+h.style.fontSize=(15+Math.random()*25)+"px";
+
+document.body.appendChild(h);
+
+}
+
+// Petals
+
+for(let i=0;i<25;i++){
+
+let p=document.createElement("div");
+
+p.className="petal";
+
+p.innerHTML="🌸";
+
+p.style.left=Math.random()*100+"vw";
+
+p.style.animationDuration=(5+Math.random()*5)+"s";
+
+document.body.appendChild(p);
+
+}
+</script>
+</body>
+</html>
